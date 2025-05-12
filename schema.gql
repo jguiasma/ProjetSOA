@@ -1,0 +1,32 @@
+type Recette {
+  id: ID!
+  titre: String!
+  description: String!
+  categorie: String!
+}
+
+type Utilisateur {
+  id: ID!
+  nom: String!
+  email: String!
+}
+
+type Query {
+  recettesParCategorie(categorie: String!): [Recette]
+  utilisateurs: [Utilisateur]
+  recette(id: ID!): Recette
+  recettes: [Recette]
+  utilisateur(id: ID!): Utilisateur
+
+
+}
+
+type Mutation {
+    ajouterUtilisateur(nom: String!, email: String!): Utilisateur
+    ajouterRecette(titre: String!, description: String!, categorie: String!): Recette
+    supprimerRecette(id: ID!): Boolean
+    supprimerUtilisateur(id: ID!): Boolean
+    modifierRecette(id: ID!, titre: String, description: String, categorie: String): Recette
+    modifierUtilisateur(id: ID!, nom: String, email: String): Utilisateur
+
+}

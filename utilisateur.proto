@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+service UtilisateurService {
+  rpc GetUtilisateur (UtilisateurRequest) returns (UtilisateurResponse);
+  rpc GetUtilisateurs (Empty) returns (UtilisateurListResponse);
+  rpc CreateUtilisateur (CreateUtilisateurRequest) returns (UtilisateurResponse);
+  rpc UpdateUtilisateur (UpdateUtilisateurRequest) returns (UtilisateurResponse);
+  rpc DeleteUtilisateur (UtilisateurRequest) returns (DeleteResponse);
+
+}
+
+message UtilisateurRequest {
+  string id = 1;
+}
+
+message CreateUtilisateurRequest {
+  string nom = 1;
+  string email = 2;
+}
+
+message UpdateUtilisateurRequest {
+  string id = 1;
+  string nom = 2;
+  string email = 3;
+}
+
+message UtilisateurResponse {
+  string id = 1;
+  string nom = 2;
+  string email = 3;
+}
+message DeleteResponse {
+  bool success = 1;
+}
+
+
+message UtilisateurListResponse {
+  repeated UtilisateurResponse utilisateurs = 1;
+}
+
+message Empty {}
